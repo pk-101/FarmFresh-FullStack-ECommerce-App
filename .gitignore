@@ -1,0 +1,21 @@
+# Node
+Frontend/node_modules/
+Frontend/dist/
+
+# VS Code
+.vscode/
+
+# .NET
+Backend/bin/
+Backend/obj/
+Backend/.vs/
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Env
+.env

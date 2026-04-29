@@ -1,9 +1,0 @@
-wwwroot\images\products\beetroot.png
-wwwroot\images\products\capsicum.png
-wwwroot\images\products\carrot.png
-wwwroot\images\products\cauliflower.png
-wwwroot\images\products\cucumber.png
-wwwroot\images\products\default.png
-wwwroot\images\products\mushroom.png
-wwwroot\images\products\potato.png
-wwwroot\images\products\tomato.png

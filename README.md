@@ -153,7 +153,11 @@ Reusable Components
 
 📸 Screenshots
 
-
+![Login](assets/Login.png)
+![Products](assets/Products.png)
+![My Cart](assets/cart-page.png)
+![My Orders](assets/my-orders.png)
+![Admin Products](assets/admin-products.png)
 
 🔮 Future Enhancements
 

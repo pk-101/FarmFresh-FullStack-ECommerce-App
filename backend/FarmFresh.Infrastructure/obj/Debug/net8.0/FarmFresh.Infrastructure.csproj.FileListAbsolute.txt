@@ -1,0 +1,40 @@
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.deps.json
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.runtimeconfig.json
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Application.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Application.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.AssemblyInfo.cs
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.sourcelink.json
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFres.CB19EFE0.Up2Date
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\refint\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.genruntimeconfig.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Infrastructure\obj\Debug\net8.0\ref\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.deps.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.runtimeconfig.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Infrastructure.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Application.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Application.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\bin\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.AssemblyInfo.cs
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.sourcelink.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFres.CB19EFE0.Up2Date
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\refint\FarmFresh.Infrastructure.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\FarmFresh.Infrastructure.genruntimeconfig.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Infrastructure\obj\Debug\net8.0\ref\FarmFresh.Infrastructure.dll

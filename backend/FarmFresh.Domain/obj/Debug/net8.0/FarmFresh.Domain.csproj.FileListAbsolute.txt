@@ -1,0 +1,24 @@
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.deps.json
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.AssemblyInfoInputs.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.AssemblyInfo.cs
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.sourcelink.json
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\refint\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\Babkend code\FarmFresh.Domain\obj\Debug\net8.0\ref\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.deps.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\bin\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.AssemblyInfoInputs.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.AssemblyInfo.cs
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.sourcelink.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\refint\FarmFresh.Domain.dll
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\FarmFresh.Domain.pdb
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.Domain\obj\Debug\net8.0\ref\FarmFresh.Domain.dll

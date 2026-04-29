@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="FarmFresh.API/FarmFresh.API.csproj" />
+  <Project Path="FarmFresh.Application/FarmFresh.Application.csproj" />
+  <Project Path="FarmFresh.Domain/FarmFresh.Domain.csproj" />
+  <Project Path="FarmFresh.Infrastructure/FarmFresh.Infrastructure.csproj" />
+</Solution>

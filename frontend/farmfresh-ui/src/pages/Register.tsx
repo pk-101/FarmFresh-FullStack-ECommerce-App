@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const Register = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [successMessage] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

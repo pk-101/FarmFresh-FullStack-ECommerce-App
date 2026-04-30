@@ -17,8 +17,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Db context registration
-builder.Services.AddDbContext<FarmFreshDbContext>(options => 
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<FarmFreshDbContext>(options =>
+options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection"),
+    sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null);
+    }));
+//options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //Identity registration
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<FarmFreshDbContext>()
@@ -68,14 +77,25 @@ builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
-await AdminUserSeeder.SeedAsync(app.Services);
+
+//await AdminUserSeeder.SeedAsync(app.Services);
+if (args.Contains("--seed"))
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+
+    await AdminUserSeeder.SeedAsync(services);
+}
+
+var env = app.Environment;
+
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -87,19 +107,19 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Seed roles
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-    string[] roles = { "Admin", "Seller", "User" };
+//    string[] roles = { "Admin", "Seller", "User" };
 
-    foreach (var role in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
-}
+//    foreach (var role in roles)
+//    {
+//        if (!await roleManager.RoleExistsAsync(role))
+//        {
+//            await roleManager.CreateAsync(new IdentityRole(role));
+//        }
+//    }
+//}
 
 app.Run();

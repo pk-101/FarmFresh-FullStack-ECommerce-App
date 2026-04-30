@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmFresh.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+523a9fbbc33060edacc3d653b7394b613464863c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0378fdca7443b32a5327c9cd2f7937b1b3ca4629")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmFresh.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmFresh.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

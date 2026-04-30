@@ -161,8 +161,9 @@ C:\Users\pk224\source\repos\Babkend code\FarmFresh.API\obj\Debug\net8.0\FarmFres
 C:\Users\pk224\source\repos\Babkend code\FarmFresh.API\obj\Debug\net8.0\ref\FarmFresh.API.dll
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\appsettings.json
-C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.staticwebassets.endpoints.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\dotnet-tools.json
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.staticwebassets.runtime.json
+C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.staticwebassets.endpoints.json
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.exe
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.deps.json
 C:\Users\pk224\source\repos\FarmFresh\backend\FarmFresh.API\bin\Debug\net8.0\FarmFresh.API.runtimeconfig.json

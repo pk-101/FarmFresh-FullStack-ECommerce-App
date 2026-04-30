@@ -1,0 +1,356 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "FarmFresh.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/admin/products": {
+      "post": {
+        "tags": [
+          "AdminProducts"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateProductRequestDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RegisterRequestDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventory/update": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateInventoryDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventory/{productId}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequestDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/orders/my": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateProductDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/available": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateOrderItemDto": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "quantity": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CreateOrderRequestDto": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderItemDto"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CreateProductDto": {
+      "required": [
+        "description",
+        "name",
+        "sellerId",
+        "unit"
+      ],
+      "type": "object",
+      "properties": {
+        "sellerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "maximum": 100000,
+          "minimum": 1,
+          "type": "number"
+        },
+        "unit": {
+          "maxLength": 20,
+          "minLength": 1,
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CreateProductRequestDto": {
+      "type": "object",
+      "properties": {
+        "sellerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "initialQuantity": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LoginRequestDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RegisterRequestDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UpdateInventoryDto": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "quantityChange": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

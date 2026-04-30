@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCart } from "../cart/CartContext";
 import toast from "react-hot-toast";
 const Navbar = () => {
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 

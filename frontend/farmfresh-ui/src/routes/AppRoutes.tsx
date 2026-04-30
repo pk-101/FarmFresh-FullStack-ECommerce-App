@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Products from "../pages/Products";
-import ProtectedRoute from "./ProtectedRoute";
+//import ProtectedRoute from "./ProtectedRoute";
 import { useAuth } from "../auth/AuthContext";
 import Register from "../pages/Register";
 import MainLayout from "../layout/MainLayout";

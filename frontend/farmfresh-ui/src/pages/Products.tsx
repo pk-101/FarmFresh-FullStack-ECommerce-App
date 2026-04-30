@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../api/productApi";
 import { getAvailableProducts } from "../api/productApi";
-import { useAuth } from "../auth/AuthContext";
-import { useNavigate } from "react-router-dom";
+//import { useAuth } from "../auth/AuthContext";
+//import { useNavigate } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
 import toast from "react-hot-toast";
 const Products = () => {
@@ -15,12 +15,12 @@ const Products = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  // const { logout } = useAuth();
+  // const navigate = useNavigate();
+  // const handleLogout = () => {
+  //   logout();
+  //   navigate("/login");
+  // };
 
   if (products.length === 0) {
     return (

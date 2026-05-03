@@ -4,6 +4,7 @@ import api from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
 import AuthCard from "../components/AuthCard";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const Login = () => {
   const { login } = useAuth();
@@ -15,6 +16,15 @@ const Login = () => {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {},
   );
+
+  const { isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log("Redirecting to dashboard...");
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated]);
 
   const validate = () => {
     const newErrors: { email?: string; password?: string } = {};
@@ -49,8 +59,6 @@ const Login = () => {
 
       login(res.data.token);
       toast.success("Welcome back 👋");
-
-      navigate("/products");
     } catch (err: any) {
       toast.error("Invalid email or password");
     } finally {

@@ -1,5 +1,4 @@
 import { useCart } from "./CartContext";
-import { createOrder } from "../api/orderApi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -9,33 +8,13 @@ const CartPage = () => {
     increaseQty,
     decreaseQty,
     removeFromCart,
-    clearCart,
     totalAmount,
   } = useCart();
 
   type OrderStatus = "idle" | "loading" | "success" | "error";
-  const [orderStatus, setOrderStatus] = useState<OrderStatus>("idle");
+  const [orderStatus] = useState<OrderStatus>("idle");
   //const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const checkout = async () => {
-    try {
-      setOrderStatus("loading");
-
-      await createOrder(cartItems); // your existing API call
-
-      toast.success("Order placed successfully 🎉");
-      //setOrderStatus("success");
-      clearCart();
-
-      setTimeout(() => {
-        navigate("/my-orders");
-      }, 3000);
-    } catch (err) {
-      toast.error("Failed to place order. Please try again.");
-      //setOrderStatus("error");
-    }
-  };
 
   return (
   <div className="max-w-6xl mx-auto mt-10 px-4">
@@ -117,7 +96,7 @@ const CartPage = () => {
         </div>
 
         <button
-          onClick={checkout}
+          onClick={() => navigate("/checkout")}
           disabled={orderStatus === "loading"}
           className={`w-full py-3 rounded-lg text-white font-medium transition
             ${
@@ -126,7 +105,7 @@ const CartPage = () => {
                 : "bg-green-700 hover:bg-green-800 active:scale-[0.98]"
             }`}
         >
-          {orderStatus === "loading" ? "Placing Order..." : "Place Order"}
+          {orderStatus === "loading" ? "Processing..." : "Proceed to Checkout"}
         </button>
       </div>
     </div>

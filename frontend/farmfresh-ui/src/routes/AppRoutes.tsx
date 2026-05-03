@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Products from "../pages/Products";
-//import ProtectedRoute from "./ProtectedRoute";
 import { useAuth } from "../auth/AuthContext";
 import Register from "../pages/Register";
 import MainLayout from "../layout/MainLayout";
@@ -9,15 +8,23 @@ import RoleProtectedRoute from "./RoleProtectedRoute";
 import Unauthorized from "../pages/Unauthorized";
 import AdminProducts from "../pages/admin/AdminProducts";
 import CartPage from "../cart/CartPage";
-import MyOrders from "../pages/MyOrders";
+import MyOrders from "../pages/dashboard/MyOrders";
+import DashboardLayout from "../layout/DashboardLayout";
+import Addresses from "../pages/dashboard/Addresses";
+import Checkout from "../pages/Checkout";
+import OrderSuccess from "../pages/OrderSuccess";
+import Profile from "../pages/dashboard/Profile";
+
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
+
   return (
     <Routes>
+      {/* Public Routes */}
       <Route
         path="/login"
         element={
-          isAuthenticated ? <Navigate to="/products" replace /> : <Login />
+          isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />
         }
       />
       <Route
@@ -26,8 +33,10 @@ const AppRoutes = () => {
           isAuthenticated ? <Navigate to="/products" replace /> : <Register />
         }
       />
-      {/* Protected routes */}
+
+      {/* Protected Layout */}
       <Route element={<MainLayout />}>
+        {/* Common User/Admin Routes */}
         <Route
           path="/products"
           element={
@@ -36,7 +45,7 @@ const AppRoutes = () => {
             </RoleProtectedRoute>
           }
         />
-        {/* Cart page */}
+
         <Route
           path="/cart"
           element={
@@ -45,14 +54,45 @@ const AppRoutes = () => {
             </RoleProtectedRoute>
           }
         />
-        <Route 
-        path="/my-orders"
-        element={
-          <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
-            <MyOrders />
-          </RoleProtectedRoute>
-        }
-      />
+
+        <Route
+          path="/checkout"
+          element={
+            <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
+              <Checkout />
+            </RoleProtectedRoute>
+          }
+        />
+
+        <Route
+  path="/order-success"
+  element={
+    <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
+      <OrderSuccess />
+    </RoleProtectedRoute>
+  }
+/>
+
+        {/* Dashboard */}
+        <Route
+          path="/dashboard"
+          element={
+            <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
+              <DashboardLayout />
+            </RoleProtectedRoute>
+          }
+        >
+          {/* Default redirect */}
+          <Route index element={<Navigate to="orders" replace />} />
+
+          <Route path="orders" element={<MyOrders />} />
+
+          {/* Placeholder routes (we'll build next) */}
+          <Route path="profile" element={<Profile />} />
+          <Route path="addresses" element={<Addresses />} />
+        </Route>
+
+        {/* Admin */}
         <Route
           path="/admin/products"
           element={
@@ -62,9 +102,17 @@ const AppRoutes = () => {
           }
         />
       </Route>
+
+      {/* Unauthorized */}
       <Route path="/unauthorized" element={<Unauthorized />} />
-      {/* default */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
+
+      {/* Default Route */}
+      <Route
+        path="*"
+        element={
+          <Navigate to={isAuthenticated ? "/products" : "/login"} replace />
+        }
+      />
     </Routes>
   );
 };

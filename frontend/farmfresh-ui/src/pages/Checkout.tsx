@@ -187,7 +187,7 @@ const Checkout = () => {
 
               {addr.isDefault && (
                 <span className="text-xs text-green-600 font-medium">
-                  Default
+                  Default Address
                 </span>
               )}
             </div>

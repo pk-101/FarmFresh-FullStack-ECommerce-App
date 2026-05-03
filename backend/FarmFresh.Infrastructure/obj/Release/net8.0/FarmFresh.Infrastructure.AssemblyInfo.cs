@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmFresh.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0378fdca7443b32a5327c9cd2f7937b1b3ca4629")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da156bdd4b3435959ae57a5ffc37631ac3ea94b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmFresh.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmFresh.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

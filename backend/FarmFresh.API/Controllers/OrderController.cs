@@ -20,33 +20,49 @@ namespace FarmFresh.API.Controllers
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateOrder(
-            [FromBody] CreateOrderRequestDto request)
+     [FromBody] CreateOrderRequestDto request)
         {
+            // Basic validation
             if (request.Items == null || request.Items.Count == 0)
                 return BadRequest("Order must contain at least one item.");
+
+            if (request.AddressId <= 0)
+                return BadRequest("Valid address is required.");
 
             foreach (var item in request.Items)
             {
                 if (item.Quantity <= 0)
-                    return BadRequest("Quantity must be greater than zero.");
+                    return BadRequest($"Invalid quantity for product {item.ProductId}");
+            }
 
-                var success = await _orderService.CreateOrderAsync(request.Items);
+            try
+            {
+                var success = await _orderService.CreateOrderAsync(request);
 
                 if (!success)
                 {
                     return BadRequest(new CreateOrderResponseDto
                     {
                         Success = false,
-                        Message = $"Unable to create order for product {item.ProductId}"
+                        Message = "Order creation failed. Please try again."
                     });
                 }
-            }
 
-            return Ok(new CreateOrderResponseDto
+                return Ok(new CreateOrderResponseDto
+                {
+                    Success = true,
+                    Message = "Order created successfully."
+                });
+            }
+            catch (Exception ex)
             {
-                Success = true,
-                Message = "Order created successfully."
-            });
+                // Optional: log this later with ILogger
+                return StatusCode(500, new CreateOrderResponseDto
+                {
+                    Success = false,
+                    Message = ex.Message
+                });
+            }
         }
         [Authorize]
         [HttpGet("my")]

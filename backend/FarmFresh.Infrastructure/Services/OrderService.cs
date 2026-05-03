@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,8 @@ namespace FarmFresh.Infrastructure.Services
             _inventoryService = inventoryService;
             _currentUserService = currentUserService;
         }
-        public async Task<bool> CreateOrderAsync(List<CreateOrderItemDto> items)
+
+        public async Task<bool> CreateOrderAsync(CreateOrderRequestDto request)
         {
             if (!_currentUserService.IsAuthenticated)
                 throw new UnauthorizedAccessException("User must be logged in to place an order.");
@@ -37,26 +39,44 @@ namespace FarmFresh.Infrastructure.Services
             if (existingOrder)
                 return true;
 
-            if (items == null || !items.Any())
+            if (request.Items == null || !request.Items.Any())
                 return false;
 
-            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+            // Use EF Core's execution strategy to handle transient failures
+            var strategy = _dbContext.Database.CreateExecutionStrategy();
+
+            return await strategy.ExecuteAsync(async () =>
+            {
+
+                using var transaction = await _dbContext.Database.BeginTransactionAsync();
 
             try
             {
-                var order = new Order
-                {
-                    UserId = _currentUserService.UserId!,
-                    Status = OrderStatus.Confirmed,
-                    CreatedAt = DateTime.UtcNow
-                };
+                    var address = await _dbContext.Addresses
+                    .FirstOrDefaultAsync(a =>
+                   a.AddressId == request.AddressId &&
+                    a.UserId == _currentUserService.UserId);
 
-                _dbContext.Orders.Add(order);
+                    if (address == null)
+                        throw new Exception("Invalid address selected.");
+
+                    var order = new Order
+                    {
+                        UserId = _currentUserService.UserId!,
+                        Status = OrderStatus.Confirmed,
+                        CreatedAt = DateTime.UtcNow,
+                        ShippingAddress =
+                                  $"{address.FullName}, {address.Street}, {address.City}, {address.State} - {address.PostalCode}",
+
+                        PaymentMethod = request.PaymentMethod
+                    };
+
+                    _dbContext.Orders.Add(order);
                 await _dbContext.SaveChangesAsync();
 
                 decimal totalAmount = 0;
-                foreach (var item in items)
-                {
+                    foreach (var item in request.Items)
+                    {
                     if (item.Quantity <= 0)
                         return false;
 
@@ -96,6 +116,7 @@ namespace FarmFresh.Infrastructure.Services
                 await transaction.RollbackAsync();
                 throw;
             }
+                });
         }
 
         public async Task<List<OrderDto>> GetMyOrdersAsync()
@@ -118,6 +139,7 @@ namespace FarmFresh.Infrastructure.Services
                 CreatedAt = o.CreatedAt,
                 TotalAmount = o.TotalAmount,
                 Status = o.Status.ToString(),
+                ShippingAddress = o.ShippingAddress,
                 Items = o.OrderItems.Select(oi => new OrderItemDto
                 {
                     ProductId = oi.ProductId,

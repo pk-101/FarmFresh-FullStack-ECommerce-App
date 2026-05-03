@@ -9,6 +9,9 @@ namespace FarmFresh.Application.DTOs.Orders
     public class CreateOrderRequestDto
     {
         public List<CreateOrderItemDto> Items { get; set; } = new();
+
+        public int AddressId { get; set; } 
+        public string PaymentMethod { get; set; } = "COD";
     }
 
 }

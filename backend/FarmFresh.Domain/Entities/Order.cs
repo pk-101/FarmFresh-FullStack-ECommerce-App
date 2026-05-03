@@ -18,5 +18,7 @@ namespace FarmFresh.Domain.Entities
         public decimal TotalAmount { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public string ShippingAddress { get; set; } = null!;
+        public string PaymentMethod { get; set; } = "COD";
     }
 }

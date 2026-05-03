@@ -9,7 +9,7 @@ namespace FarmFresh.Application.Interfaces
 {
     public interface IOrderService
     {
-        Task<bool> CreateOrderAsync(List<CreateOrderItemDto> items);
+        Task<bool> CreateOrderAsync(CreateOrderRequestDto request);
         Task<List<OrderDto>> GetMyOrdersAsync();
     }
 }

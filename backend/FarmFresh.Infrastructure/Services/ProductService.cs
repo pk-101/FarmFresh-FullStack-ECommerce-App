@@ -106,7 +106,13 @@ namespace FarmFresh.Infrastructure.Services
         }
         public async Task<bool> CreateProductAsync(CreateProductRequestDto dto)
         {
-            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            // Use EF Core's execution strategy to handle transient failures
+            var strategy = _dbContext.Database.CreateExecutionStrategy();
+
+            return await strategy.ExecuteAsync(async () =>
+            {
+                using var transaction = await _dbContext.Database.BeginTransactionAsync();
 
             var sellerExists = await _dbContext.Sellers
                 .AnyAsync(s => s.SellerId == dto.SellerId && s.IsActive);
@@ -138,6 +144,7 @@ namespace FarmFresh.Infrastructure.Services
 
             await transaction.CommitAsync();
             return true;
+                });
         }
 
 

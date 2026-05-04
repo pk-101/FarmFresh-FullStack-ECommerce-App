@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import InventoryModal from "./InventoryModal";
+import AdminProductSkeleton from "../../components/skeletons/AdminProductSkeleton";
 
 const containerVariants = {
   hidden: {},
@@ -58,7 +59,6 @@ const AdminProductList = () => {
     }
   };
 
-  // Inline inventory update
   const updateStock = async (productId: number, change: number) => {
     try {
       setUpdatingStock(productId);
@@ -76,18 +76,6 @@ const AdminProductList = () => {
       setUpdatingStock(null);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="p-10 text-center text-gray-500">Loading products...</div>
-    );
-  }
-
-  if (products.length === 0) {
-    return (
-      <div className="p-10 text-center text-gray-500">No products found</div>
-    );
-  }
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -117,153 +105,182 @@ const AdminProductList = () => {
         initial="hidden"
         animate="visible"
       >
-        {products.map((product) => {
-          const isOutOfStock = (product.availableQuantity ?? 0) === 0;
-          const isLowStock =
-            (product.availableQuantity ?? 0) > 0 &&
-            product.availableQuantity < 5;
+        {loading
+          ? [...Array(6)].map((_, i) => (
+              <AdminProductSkeleton key={i} />
+            ))
+          : products.map((product) => {
+              const qty = product.availableQuantity ?? 0;
+              const isOutOfStock = qty === 0;
+              const isLowStock = qty > 0 && qty < 5;
 
-          return (
-            <motion.div
-              key={product.productId}
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-              className={`group rounded-2xl border overflow-hidden transition-all duration-300
-                ${
-                  !product.isActive
-                    ? "opacity-60 bg-gray-50"
-                    : "bg-white hover:shadow-xl"
-                }
-              `}
-            >
-              {/* Image */}
-              <div className="h-44 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden">
-                {product.imageUrl ? (
-                  <motion.img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="h-full object-contain"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                ) : (
-                  <span className="text-gray-400 text-sm">No Image</span>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-5 space-y-3">
-                <h3 className="font-semibold text-lg line-clamp-1">
-                  {product.name}
-                </h3>
-
-                <p className="text-sm text-gray-500 line-clamp-2">
-                  {product.description}
-                </p>
-
-                {/* Price + Status */}
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-green-600">
-                    ₹ {product.price}
-                  </span>
-
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full font-medium ${
-                      product.isActive
-                        ? "bg-green-100 text-green-700"
-                        : "bg-gray-200 text-gray-600"
-                    }`}
-                  >
-                    {product.isActive ? "Active" : "Inactive"}
-                  </span>
-                </div>
-
-                {/* Inventory */}
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-500">Stock:</span>
-
-                  <span
-                    className={`font-semibold ${
-                      isOutOfStock
-                        ? "text-red-500"
-                        : isLowStock
-                          ? "text-yellow-600"
-                          : "text-gray-800"
-                    }`}
-                  >
-                    {product.availableQuantity ?? 0} {product.unit}
-                  </span>
-                </div>
-
-                {/* Stock Indicators */}
-                {isOutOfStock && (
-                  <p className="text-xs text-red-500 font-medium">
-                    Out of Stock
-                  </p>
-                )}
-
-                {isLowStock && (
-                  <p className="text-xs text-yellow-600 font-medium">
-                    ⚠️ Low Stock
-                  </p>
-                )}
-
-                {/* Inline Inventory Controls */}
-                <div className="flex items-center gap-2 mt-3">
-                  <button
-                    disabled={updatingStock === product.productId}
-                    onClick={() => updateStock(product.productId, -1)}
-                    className="px-3 py-1 rounded-md bg-red-100 text-red-600 hover:bg-red-200"
-                  >
-                    −
-                  </button>
-
-                  <button
-                    disabled={updatingStock === product.productId}
-                    onClick={() => updateStock(product.productId, 1)}
-                    className="px-3 py-1 rounded-md bg-green-100 text-green-600 hover:bg-green-200"
-                  >
-                    +
-                  </button>
-
-                  {updatingStock === product.productId && (
-                    <span className="text-xs text-gray-400">updating...</span>
-                  )}
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="grid grid-cols-3 border-t text-sm">
-                <button
-                  onClick={() => toggleActive(product.productId)}
-                  className="py-2 hover:bg-gray-50 transition"
+              return (
+                <motion.div
+                  key={product.productId}
+                  variants={cardVariants}
+                  whileHover={{ y: -8 }}
+                  className={`group rounded-2xl border overflow-hidden transition-all duration-300
+                    ${
+                      !product.isActive
+                        ? "opacity-60 bg-gray-50"
+                        : "bg-white hover:shadow-xl"
+                    }
+                  `}
                 >
-                  {product.isActive ? "Deactivate" : "Activate"}
-                </button>
+                  {/* Image */}
+                  <div className="h-44 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden">
+                    {product.imageUrl ? (
+                      <motion.img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="h-full object-contain"
+                        whileHover={{ scale: 1.08 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    ) : (
+                      <span className="text-gray-400 text-sm">
+                        No Image
+                      </span>
+                    )}
+                  </div>
 
-                <button
-                  onClick={() =>
-                    navigate(`/admin/products/edit/${product.productId}`)
-                  }
-                  className="py-2 border-l hover:bg-gray-50 transition"
-                >
-                  Edit
-                </button>
+                  {/* Content */}
+                  <div className="p-5 space-y-3">
+                    <h3 className="font-semibold text-lg line-clamp-1">
+                      {product.name}
+                    </h3>
 
-                <button
-                  onClick={() => {
-                    setSelectedProduct(product);
-                    setIsModalOpen(true);
-                  }}
-                  className="py-2 border-l text-blue-600 hover:bg-blue-50 transition"
-                >
-                  Inventory
-                </button>
-              </div>
-            </motion.div>
-          );
-        })}
+                    <p className="text-sm text-gray-500 line-clamp-2">
+                      {product.description}
+                    </p>
+
+                    {/* Price + Status */}
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg font-bold text-green-600">
+                        ₹ {product.price}
+                      </span>
+
+                      <span
+                        className={`text-xs px-2 py-1 rounded-full font-medium ${
+                          product.isActive
+                            ? "bg-green-100 text-green-700"
+                            : "bg-gray-200 text-gray-600"
+                        }`}
+                      >
+                        {product.isActive ? "Active" : "Inactive"}
+                      </span>
+                    </div>
+
+                    {/* Inventory */}
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-gray-500">Stock:</span>
+
+                      <span
+                        className={`font-semibold ${
+                          isOutOfStock
+                            ? "text-red-500"
+                            : isLowStock
+                            ? "text-yellow-600"
+                            : "text-gray-800"
+                        }`}
+                      >
+                        {qty} {product.unit}
+                      </span>
+                    </div>
+
+                    {/* Stock Indicators */}
+                    {isOutOfStock && (
+                      <p className="text-xs text-red-500 font-medium">
+                        Out of Stock
+                      </p>
+                    )}
+
+                    {isLowStock && (
+                      <p className="text-xs text-yellow-600 font-medium">
+                        ⚠️ Low Stock
+                      </p>
+                    )}
+
+                    {/* Inline Inventory Controls */}
+                    <div className="flex items-center gap-2 mt-3">
+                      <button
+                        disabled={updatingStock === product.productId}
+                        onClick={() =>
+                          updateStock(product.productId, -1)
+                        }
+                        className="px-3 py-1 rounded-md bg-red-100 text-red-600 hover:bg-red-200"
+                      >
+                        −
+                      </button>
+
+                      <button
+                        disabled={updatingStock === product.productId}
+                        onClick={() =>
+                          updateStock(product.productId, 1)
+                        }
+                        className="px-3 py-1 rounded-md bg-green-100 text-green-600 hover:bg-green-200"
+                      >
+                        +
+                      </button>
+
+                      {updatingStock === product.productId && (
+                        <span className="text-xs text-gray-400">
+                          updating...
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="grid grid-cols-3 border-t text-sm">
+                    <button
+                      onClick={() =>
+                        toggleActive(product.productId)
+                      }
+                      className="py-2 hover:bg-gray-50 transition"
+                    >
+                      {product.isActive
+                        ? "Deactivate"
+                        : "Activate"}
+                    </button>
+
+                    <button
+                      onClick={() =>
+                        navigate(
+                          `/admin/products/edit/${product.productId}`
+                        )
+                      }
+                      className="py-2 border-l hover:bg-gray-50 transition"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setSelectedProduct(product);
+                        setIsModalOpen(true);
+                      }}
+                      className="py-2 border-l text-blue-600 hover:bg-blue-50 transition"
+                    >
+                      Inventory
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })}
       </motion.div>
+
+      {/* Empty State */}
+      {!loading && products.length === 0 && (
+        <div className="text-center mt-20 text-gray-500">
+          <p className="text-xl font-semibold">No products found</p>
+          <p className="text-sm mt-1">
+            Start by adding your first product
+          </p>
+        </div>
+      )}
+
+      {/* Inventory Modal */}
       <InventoryModal
         isOpen={isModalOpen}
         product={selectedProduct}

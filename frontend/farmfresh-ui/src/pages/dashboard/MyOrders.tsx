@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMyOrders } from "../../api/orderApi";
 import OrderSkeleton from "../../components/skeletons/OrderSkeleton";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const getStatusStyle = (status: string) => {
   switch (status.toLowerCase()) {
@@ -42,6 +43,7 @@ const cardVariants = {
 const MyOrders = () => {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMyOrders()
@@ -108,9 +110,7 @@ const MyOrders = () => {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:justify-between md:items-center px-6 py-4 border-b gap-2">
               <div>
-                <p className="text-lg font-semibold">
-                  Order #{order.orderId}
-                </p>
+                <p className="text-lg font-semibold">Order #{order.orderId}</p>
                 <p className="text-sm text-gray-500">
                   {new Date(order.createdAt).toLocaleString()}
                 </p>
@@ -118,7 +118,7 @@ const MyOrders = () => {
 
               <span
                 className={`px-3 py-1 text-xs rounded-full font-medium w-fit ${getStatusStyle(
-                  order.status
+                  order.status,
                 )}`}
               >
                 {order.status}
@@ -154,13 +154,14 @@ const MyOrders = () => {
 
             {/* Footer */}
             <div className="flex flex-col md:flex-row md:justify-between md:items-center px-6 py-4 bg-gray-50 dark:bg-gray-700 border-t rounded-b-2xl gap-2">
-              <button className="text-sm text-green-600 font-medium hover:underline">
+              <button
+                onClick={() => navigate(`/dashboard/orders/${order.orderId}`)}
+                className="text-sm text-green-600 font-medium hover:underline"
+              >
                 View Details →
               </button>
 
-              <p className="text-lg font-bold">
-                Total: ₹ {order.totalAmount}
-              </p>
+              <p className="text-lg font-bold">Total: ₹ {order.totalAmount}</p>
             </div>
           </motion.div>
         ))}

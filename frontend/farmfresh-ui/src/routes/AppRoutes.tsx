@@ -18,6 +18,7 @@ import AdminLayout from "../layout/AdminLayout";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminProductList from "../pages/admin/AdminProductList";
 import EditProduct from "../pages/admin/EditProduct";
+import OrderDetails from "../pages/dashboard/OrderDetails";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
@@ -91,7 +92,8 @@ const AppRoutes = () => {
 
           <Route path="orders" element={<MyOrders />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="addresses" element={<Addresses />} />
+          <Route path="addresses" element={<Addresses />}/>
+          <Route path="orders/:orderId" element={<OrderDetails />} />
         </Route>
 
         {/* Admin */}

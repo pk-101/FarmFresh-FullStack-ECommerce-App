@@ -22,7 +22,7 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       console.log("Redirecting to dashboard...");
-      navigate("/dashboard");
+      navigate("/products");
     }
   }, [isAuthenticated]);
 

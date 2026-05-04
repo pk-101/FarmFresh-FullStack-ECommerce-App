@@ -14,6 +14,9 @@ import Addresses from "../pages/dashboard/Addresses";
 import Checkout from "../pages/Checkout";
 import OrderSuccess from "../pages/OrderSuccess";
 import Profile from "../pages/dashboard/Profile";
+import AdminLayout from "../layout/AdminLayout";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import AdminProductList from "../pages/admin/AdminProductList";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
@@ -65,13 +68,13 @@ const AppRoutes = () => {
         />
 
         <Route
-  path="/order-success"
-  element={
-    <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
-      <OrderSuccess />
-    </RoleProtectedRoute>
-  }
-/>
+          path="/order-success"
+          element={
+            <RoleProtectedRoute allowedRoles={["User", "Admin"]}>
+              <OrderSuccess />
+            </RoleProtectedRoute>
+          }
+        />
 
         {/* Dashboard */}
         <Route
@@ -86,21 +89,25 @@ const AppRoutes = () => {
           <Route index element={<Navigate to="orders" replace />} />
 
           <Route path="orders" element={<MyOrders />} />
-
-          {/* Placeholder routes (we'll build next) */}
           <Route path="profile" element={<Profile />} />
           <Route path="addresses" element={<Addresses />} />
         </Route>
 
         {/* Admin */}
         <Route
-          path="/admin/products"
+          path="/admin"
           element={
             <RoleProtectedRoute allowedRoles={["Admin"]}>
-              <AdminProducts />
+              <AdminLayout />
             </RoleProtectedRoute>
           }
-        />
+        >
+          {/* Default route when visiting /admin */}
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="products" element={<AdminProductList />} />
+          <Route path="products/create" element={<AdminProducts />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+        </Route>
       </Route>
 
       {/* Unauthorized */}

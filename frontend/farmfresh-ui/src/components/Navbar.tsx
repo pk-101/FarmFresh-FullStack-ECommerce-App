@@ -56,7 +56,7 @@ const Navbar = () => {
             </Link>
 
             {user?.role === "Admin" && (
-              <Link to="/admin/products" className="text-white hover:underline">
+              <Link to="/admin/dashboard" className="text-white hover:underline">
                 Admin
               </Link>
             )}
@@ -100,7 +100,7 @@ const Navbar = () => {
           </Link>
 
           {user?.role === "Admin" && (
-            <Link to="/admin/products" onClick={() => setOpen(false)} className="block text-white">
+            <Link to="/admin/dashboard" onClick={() => setOpen(false)} className="block text-white">
               Admin
             </Link>
           )}

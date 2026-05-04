@@ -17,6 +17,7 @@ import Profile from "../pages/dashboard/Profile";
 import AdminLayout from "../layout/AdminLayout";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminProductList from "../pages/admin/AdminProductList";
+import EditProduct from "../pages/admin/EditProduct";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
@@ -106,6 +107,7 @@ const AppRoutes = () => {
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="products" element={<AdminProductList />} />
           <Route path="products/create" element={<AdminProducts />} />
+          <Route path="products/edit/:id" element={<EditProduct />} />
           <Route path="dashboard" element={<AdminDashboard />} />
         </Route>
       </Route>
